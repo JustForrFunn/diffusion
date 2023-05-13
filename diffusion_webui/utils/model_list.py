@@ -5,6 +5,7 @@ stable_model_list = [
     "wavymulder/Analog-Diffusion",
     "dreamlike-art/dreamlike-diffusion-1.0",
     "andite/anything-v4.0",
+    "SG161222/Realistic_Vision_V2.0",
     "dreamlike-art/dreamlike-photoreal-2.0",
 ]
 
