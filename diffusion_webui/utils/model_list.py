@@ -2,11 +2,10 @@ stable_model_list = [
     "runwayml/stable-diffusion-v1-5",
     "stabilityai/stable-diffusion-2-1",
     "prompthero/openjourney-v4",
-    "wavymulder/Analog-Diffusion",
     "dreamlike-art/dreamlike-diffusion-1.0",
     "andite/anything-v4.0",
     "SG161222/Realistic_Vision_V2.0",
-    "dreamlike-art/dreamlike-photoreal-2.0",
+    "kadirnar/CyberRealistic"
 ]
 
 controlnet_canny_model_list = [
