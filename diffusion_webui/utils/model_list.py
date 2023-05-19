@@ -5,7 +5,6 @@ stable_model_list = [
     "dreamlike-art/dreamlike-diffusion-1.0",
     "andite/anything-v4.0",
     "SG161222/Realistic_Vision_V2.0",
-    "kadirnar/CyberRealistic"
 ]
 
 controlnet_canny_model_list = [
@@ -40,6 +39,7 @@ controlnet_scribble_model_list = [
 stable_inpiant_model_list = [
     "stabilityai/stable-diffusion-2-inpainting",
     "runwayml/stable-diffusion-inpainting",
+    "SG161222/Realistic_Vision_V2.0"
 ]
 
 controlnet_mlsd_model_list = [
