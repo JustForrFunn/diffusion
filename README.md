@@ -4,7 +4,7 @@ emoji: 🚀
 colorFrom: green
 colorTo: red
 sdk: gradio
-sdk_version: 3.19
+sdk_version: 3.29
 app_file: app.py
 pinned: false
 license: openrail
