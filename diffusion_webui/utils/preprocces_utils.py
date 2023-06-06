@@ -14,7 +14,7 @@ from controlnet_aux import (
     ZoeDetector,
 )
 
-import numpmy as np
+import numpy as np
 import cv2
 
 
