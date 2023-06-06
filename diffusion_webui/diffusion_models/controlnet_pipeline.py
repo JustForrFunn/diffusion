@@ -1,5 +1,6 @@
 import gradio as gr
 import torch
+import cv2
 from diffusers import ControlNetModel, StableDiffusionControlNetPipeline
 from PIL import Image
 
