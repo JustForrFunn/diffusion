@@ -33,6 +33,7 @@ PREPROCCES_DICT = {
     "Canny": CannyDetector(),
     "ContentShuffle": ContentShuffleDetector(),
     "MediapipeFace": MediapipeFaceDetector(),
+    "ScribbleXDOG": scribble_xdog
 }
 
 def pad64(x):
