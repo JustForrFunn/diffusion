@@ -17,25 +17,6 @@ from controlnet_aux import (
 import numpy as np
 import cv2
 
-
-PREPROCCES_DICT = {
-    "Hed": HEDdetector.from_pretrained("lllyasviel/Annotators"),
-    "Midas": MidasDetector.from_pretrained("lllyasviel/Annotators"),
-    "MLSD": MLSDdetector.from_pretrained("lllyasviel/Annotators"),
-    "Openpose": OpenposeDetector.from_pretrained("lllyasviel/Annotators"),
-    "PidiNet": PidiNetDetector.from_pretrained("lllyasviel/Annotators"),
-    "NormalBae": NormalBaeDetector.from_pretrained("lllyasviel/Annotators"),
-    "Lineart": LineartDetector.from_pretrained("lllyasviel/Annotators"),
-    "LineartAnime": LineartAnimeDetector.from_pretrained(
-        "lllyasviel/Annotators"
-    ),
-    "Zoe": ZoeDetector.from_pretrained("lllyasviel/Annotators"),
-    "Canny": CannyDetector(),
-    "ContentShuffle": ContentShuffleDetector(),
-    "MediapipeFace": MediapipeFaceDetector(),
-    "ScribbleXDOG": scribble_xdog
-}
-
 def pad64(x):
     return int(np.ceil(float(x) / 64.0) * 64 - x)
 
@@ -90,4 +71,23 @@ def scribble_xdog(img, res=512, thr_a=32, **kwargs):
     result = np.zeros_like(img, dtype=np.uint8)
     result[2 * (255 - dog) > thr_a] = 255
     return remove_pad(result), True
+
+
+PREPROCCES_DICT = {
+    "Hed": HEDdetector.from_pretrained("lllyasviel/Annotators"),
+    "Midas": MidasDetector.from_pretrained("lllyasviel/Annotators"),
+    "MLSD": MLSDdetector.from_pretrained("lllyasviel/Annotators"),
+    "Openpose": OpenposeDetector.from_pretrained("lllyasviel/Annotators"),
+    "PidiNet": PidiNetDetector.from_pretrained("lllyasviel/Annotators"),
+    "NormalBae": NormalBaeDetector.from_pretrained("lllyasviel/Annotators"),
+    "Lineart": LineartDetector.from_pretrained("lllyasviel/Annotators"),
+    "LineartAnime": LineartAnimeDetector.from_pretrained(
+        "lllyasviel/Annotators"
+    ),
+    "Zoe": ZoeDetector.from_pretrained("lllyasviel/Annotators"),
+    "Canny": CannyDetector(),
+    "ContentShuffle": ContentShuffleDetector(),
+    "MediapipeFace": MediapipeFaceDetector(),
+    "ScribbleXDOG": scribble_xdog
+}
     
