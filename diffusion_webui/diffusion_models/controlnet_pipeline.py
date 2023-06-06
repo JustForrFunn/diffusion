@@ -73,14 +73,12 @@ class StableDiffusionControlNetGenerator(ControlnetPipeline):
         )
         if preprocces_type== "ScribbleXDOG":
             read_image = cv2.imread(image_path)
-            controlnet_image = Image.fromarray(read_image)
+            controlnet_image = self.controlnet_preprocces(read_image=read_image, preprocces_type=preprocces_type)[0]
+            controlnet_image = Image.fromarray(controlnet_image)
 
         else:
             read_image = Image.open(image_path)
-
-        controlnet_image = self.controlnet_preprocces(
-            read_image=read_image, preprocces_type=preprocces_type
-        )[0]
+            controlnet_image = self.controlnet_preprocces(read_image=read_image, preprocces_type=preprocces_type)
 
         if seed_generator == 0:
             random_seed = torch.randint(0, 1000000, (1,))
