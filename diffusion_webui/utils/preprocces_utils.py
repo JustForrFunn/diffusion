@@ -64,7 +64,6 @@ def resize_image_with_pad(input_image, resolution, skip_hwc3=False):
 
 
 def scribble_xdog(img, res=512, thr_a=32, **kwargs):
-    img = cv2.imread(img)
     img, remove_pad = resize_image_with_pad(img, res)
     g1 = cv2.GaussianBlur(img.astype(np.float32), (0, 0), 0.5)
     g2 = cv2.GaussianBlur(img.astype(np.float32), (0, 0), 5.0)
