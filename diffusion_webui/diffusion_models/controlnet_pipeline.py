@@ -71,9 +71,9 @@ class StableDiffusionControlNetGenerator(ControlnetPipeline):
             scheduler=scheduler,
         )
 
-        read_image = Image.open(image_path)
+        #read_image = Image.open(image_path)
         controlnet_image = self.controlnet_preprocces(
-            read_image=read_image, preprocces_type=preprocces_type
+            read_image=image_path, preprocces_type=preprocces_type
         )
 
         if seed_generator == 0:
