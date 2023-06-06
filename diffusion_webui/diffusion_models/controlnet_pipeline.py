@@ -82,6 +82,8 @@ class StableDiffusionControlNetGenerator(ControlnetPipeline):
             generator = torch.manual_seed(random_seed)
         else:
             generator = torch.manual_seed(seed_generator)
+        
+        controlnet_image = Image.fromarray(controlnet_image)
 
         output = pipe(
             prompt=prompt,
