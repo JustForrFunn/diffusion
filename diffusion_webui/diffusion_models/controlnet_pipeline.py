@@ -75,7 +75,7 @@ class StableDiffusionControlNetGenerator(ControlnetPipeline):
         read_image = cv2.imread(image_path)
         controlnet_image = self.controlnet_preprocces(
             read_image=read_image, preprocces_type=preprocces_type
-        )
+        )[0]
 
         if seed_generator == 0:
             random_seed = torch.randint(0, 1000000, (1,))
