@@ -14,7 +14,7 @@ class StableDiffusionImage2ImageGenerator:
     def __init__(self):
         self.pipe = None
 
-    def load_model(self, model_path, scheduler):
+    def load_model(self, stable_model_path, scheduler):
         if self.pipe is None or self.pipe.model_name != stable_model_path or self.pipe.scheduler_name != scheduler:
             self.pipe = StableDiffusionImg2ImgPipeline.from_pretrained(
                 model_path, safety_checker=None, torch_dtype=torch.float16
@@ -30,7 +30,7 @@ class StableDiffusionImage2ImageGenerator:
     def generate_image(
         self,
         image_path: str,
-        model_path: str,
+        stable_model_path: str,
         prompt: str,
         negative_prompt: str,
         num_images_per_prompt: int,
@@ -40,7 +40,7 @@ class StableDiffusionImage2ImageGenerator:
         seed_generator=0,
     ):
         pipe = self.load_model(
-            model_path=model_path,
+            stable_model_path=stable_model_path,
             scheduler=scheduler,
         )
 
