@@ -18,12 +18,38 @@ from diffusion_webui.utils.scheduler_list import (
 )
 
 
+stable_model_list = [
+    "runwayml/stable-diffusion-v1-5",
+    "dreamlike-art/dreamlike-diffusion-1.0",
+    "kadirnar/maturemalemix_v0",
+    "kadirnar/DreamShaper_v6"
+]
+
+stable_inpiant_model_list = [
+    "stabilityai/stable-diffusion-2-inpainting",
+    "runwayml/stable-diffusion-inpainting",
+    "saik0s/realistic_vision_inpainting",
+]
+
+controlnet_model_list = [
+    "lllyasviel/control_v11p_sd15_canny",
+    "lllyasviel/control_v11f1p_sd15_depth",
+    "lllyasviel/control_v11p_sd15_openpose",
+    "lllyasviel/control_v11p_sd15_scribble",
+    "lllyasviel/control_v11p_sd15_mlsd",
+    "lllyasviel/control_v11e_sd15_shuffle",
+    "lllyasviel/control_v11e_sd15_ip2p",
+    "lllyasviel/control_v11p_sd15_lineart",
+    "lllyasviel/control_v11p_sd15s2_lineart_anime",
+    "lllyasviel/control_v11p_sd15_softedge",
+]
+
 class StableDiffusionControlNetGenerator(ControlnetPipeline):
     def __init__(self):
         self.pipe = None
-
+        
     def load_model(self, stable_model_path, controlnet_model_path, scheduler):
-        if self.pipe is None:
+        if self.pipe is None or self.pipe.model_name != stable_model_path or self.pipe.scheduler_name != scheduler:
             controlnet = ControlNetModel.from_pretrained(
                 controlnet_model_path, torch_dtype=torch.float16
             )
@@ -33,12 +59,15 @@ class StableDiffusionControlNetGenerator(ControlnetPipeline):
                 safety_checker=None,
                 torch_dtype=torch.float16,
             )
-
-        self.pipe = get_scheduler(pipe=self.pipe, scheduler=scheduler)
-        self.pipe.to("cuda")
-        self.pipe.enable_xformers_memory_efficient_attention()
-
+            self.pipe.model_name = stable_model_path
+    
+            self.pipe = get_scheduler(pipe=self.pipe, scheduler=scheduler)
+            self.pipe.scheduler_name = scheduler
+            self.pipe.to("cuda")
+            self.pipe.enable_xformers_memory_efficient_attention()
+    
         return self.pipe
+
 
     def controlnet_preprocces(
         self,
