@@ -72,6 +72,8 @@ def scribble_xdog(img, res=512, thr_a=32, **kwargs):
     result[2 * (255 - dog) > thr_a] = 255
     return remove_pad(result), True
 
+def none_preprocces(image_path:str):
+    return Image.open(image_path)
 
 PREPROCCES_DICT = {
     "Hed": HEDdetector.from_pretrained("lllyasviel/Annotators"),
@@ -88,6 +90,7 @@ PREPROCCES_DICT = {
     "Canny": CannyDetector(),
     "ContentShuffle": ContentShuffleDetector(),
     "MediapipeFace": MediapipeFaceDetector(),
-    "ScribbleXDOG": scribble_xdog
+    "ScribbleXDOG": scribble_xdog,
+    "None": none_preprocces
 }
     
