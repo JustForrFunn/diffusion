@@ -16,7 +16,9 @@ class StableDiffusionInpaintGenerator:
             )
             self.pipe.to("cuda")
             self.pipe.enable_xformers_memory_efficient_attention()
-    
+            self.pipe.scheduler_name = scheduler
+            self.pipe.model_name = stable_model_path
+            
         return self.pipe
 
     def generate_image(
