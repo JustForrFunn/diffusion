@@ -23,7 +23,7 @@ class StableDiffusionControlNetInpaintGenerator(ControlnetPipeline):
         super().__init__()
 
     def load_model(self, stable_model_path, controlnet_model_path, scheduler):
-        if self.pipe is None:
+        if self.pipe is None or self.pipe.model_name != stable_model_path or self.pipe.scheduler_name != scheduler:
             controlnet = ControlNetModel.from_pretrained(
                 controlnet_model_path, torch_dtype=torch.float16
             )
@@ -35,10 +35,11 @@ class StableDiffusionControlNetInpaintGenerator(ControlnetPipeline):
                     torch_dtype=torch.float16,
                 )
             )
-
-        self.pipe = get_scheduler(pipe=self.pipe, scheduler=scheduler)
-        self.pipe.to("cuda")
-        self.pipe.enable_xformers_memory_efficient_attention()
+            
+            self.pipe.model_name = stable_model_path
+            self.pipe = get_scheduler(pipe=self.pipe, scheduler=scheduler)
+            self.pipe.to("cuda")
+            self.pipe.enable_xformers_memory_efficient_attention()
 
         return self.pipe
 
