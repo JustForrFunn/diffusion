@@ -17,7 +17,7 @@ class StableDiffusionImage2ImageGenerator:
     def load_model(self, stable_model_path, scheduler):
         if self.pipe is None or self.pipe.model_name != stable_model_path or self.pipe.scheduler_name != scheduler:
             self.pipe = StableDiffusionImg2ImgPipeline.from_pretrained(
-                model_path, safety_checker=None, torch_dtype=torch.float16
+                stable_model_path, safety_checker=None, torch_dtype=torch.float16
             )
             
             self.pipe.model_name = stable_model_path
