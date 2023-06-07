@@ -16,7 +16,7 @@ class StableDiffusionText2ImageGenerator:
     def load_model(
         self,
         stable_model_path,
-        scheduler_name,
+        scheduler,
     ):
         if self.pipe is None or self.pipe.model_name != stable_model_path or self.pipe.scheduler_name != scheduler:
             self.pipe = StableDiffusionPipeline.from_pretrained(
