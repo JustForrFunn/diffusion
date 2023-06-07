@@ -9,7 +9,7 @@ class StableDiffusionInpaintGenerator:
     def __init__(self):
         self.pipe = None
 
-    def load_model(self, model_path):
+    def load_model(self, stable_model_path):
         if self.pipe is None or self.pipe.model_name != stable_model_path:
             self.pipe = DiffusionPipeline.from_pretrained(
                 model_path, revision="fp16", torch_dtype=torch.float16
@@ -22,7 +22,7 @@ class StableDiffusionInpaintGenerator:
     def generate_image(
         self,
         pil_image: str,
-        model_path: str,
+        stable_model_path: str,
         prompt: str,
         negative_prompt: str,
         num_images_per_prompt: int,
@@ -32,7 +32,7 @@ class StableDiffusionInpaintGenerator:
     ):
         image = pil_image["image"].convert("RGB").resize((512, 512))
         mask_image = pil_image["mask"].convert("RGB").resize((512, 512))
-        pipe = self.load_model(model_path)
+        pipe = self.load_model(stable_model_path)
 
         if seed_generator == 0:
             random_seed = torch.randint(0, 1000000, (1,))
