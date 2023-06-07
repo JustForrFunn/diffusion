@@ -105,7 +105,9 @@ class StableDiffusionControlNetGenerator(ControlnetPipeline):
             read_image = cv2.imread(image_path)
             controlnet_image = self.controlnet_preprocces(read_image=read_image, preprocces_type=preprocces_type)[0]
             controlnet_image = Image.fromarray(controlnet_image)
-
+            
+        elif preprocces_type== "None":
+            controlnet_image = self.controlnet_preprocces(read_image=image_path, preprocces_type=preprocces_type)
         else:
             read_image = Image.open(image_path)
             controlnet_image = self.controlnet_preprocces(read_image=read_image, preprocces_type=preprocces_type)
