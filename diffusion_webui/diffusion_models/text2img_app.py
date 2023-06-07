@@ -32,7 +32,7 @@ class StableDiffusionText2ImageGenerator:
 
     def generate_image(
         self,
-        model_path: str,
+        stable_model_path: str,
         prompt: str,
         negative_prompt: str,
         num_images_per_prompt: int,
@@ -44,7 +44,7 @@ class StableDiffusionText2ImageGenerator:
         seed_generator=0,
     ):
         pipe = self.load_model(
-            model_path=model_path,
+            stable_model_path=stable_model_path,
             scheduler=scheduler,
         )
         if seed_generator == 0:
