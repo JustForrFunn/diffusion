@@ -37,6 +37,7 @@ class StableDiffusionControlNetInpaintGenerator(ControlnetPipeline):
             )
             
             self.pipe.model_name = stable_model_path
+            self.pipe.scheduler_name = scheduler
             self.pipe = get_scheduler(pipe=self.pipe, scheduler=scheduler)
             self.pipe.to("cuda")
             self.pipe.enable_xformers_memory_efficient_attention()
