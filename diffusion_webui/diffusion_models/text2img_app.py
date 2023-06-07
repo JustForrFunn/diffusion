@@ -15,10 +15,10 @@ class StableDiffusionText2ImageGenerator:
 
     def load_model(
         self,
-        model_path,
-        scheduler,
+        stable_model_path,
+        scheduler_name,
     ):
-        if self.pipe is None:
+        if self.pipe is None or self.pipe.model_name != stable_model_path or self.pipe.scheduler_name != scheduler:
             self.pipe = StableDiffusionPipeline.from_pretrained(
                 model_path, safety_checker=None, torch_dtype=torch.float16
             )
@@ -26,6 +26,7 @@ class StableDiffusionText2ImageGenerator:
         self.pipe = get_scheduler(pipe=self.pipe, scheduler=scheduler)
         self.pipe.to("cuda")
         self.pipe.enable_xformers_memory_efficient_attention()
+        self.pipe.model_name = stable_model_path
 
         return self.pipe
 
