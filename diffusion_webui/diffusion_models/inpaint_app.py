@@ -10,14 +10,13 @@ class StableDiffusionInpaintGenerator:
         self.pipe = None
 
     def load_model(self, model_path):
-        if self.pipe is None:
+        if self.pipe is None or self.pipe.model_name != stable_model_path:
             self.pipe = DiffusionPipeline.from_pretrained(
                 model_path, revision="fp16", torch_dtype=torch.float16
             )
-
-        self.pipe.to("cuda")
-        self.pipe.enable_xformers_memory_efficient_attention()
-
+            self.pipe.to("cuda")
+            self.pipe.enable_xformers_memory_efficient_attention()
+    
         return self.pipe
 
     def generate_image(
