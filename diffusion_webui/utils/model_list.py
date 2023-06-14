@@ -2,7 +2,8 @@ stable_model_list = [
     "runwayml/stable-diffusion-v1-5",
     "dreamlike-art/dreamlike-diffusion-1.0",
     "kadirnar/maturemalemix_v0",
-    "kadirnar/DreamShaper_v6"
+    "kadirnar/DreamShaper_v6",
+    "stabilityai/stable-diffusion-2-inpainting"
 ]
 
 stable_inpiant_model_list = [
