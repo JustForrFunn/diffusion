@@ -15,7 +15,7 @@ def diffusion_app():
         gr.HTML(
         """
         <h1 style='text-align: center'>
-       Stable Diffusion Infinite Zoom Out and Zoom In
+       Stable Diffusion + ControlNet + Inpaint
         </h1>
         """
     )
