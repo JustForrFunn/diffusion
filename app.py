@@ -40,7 +40,7 @@ def diffusion_app():
                 with gr.Tab(label="Controlnet Inpaint"):
                     StableDiffusionControlNetInpaintGenerator.app()
 
-    app.queue(concurrency_count=1)
+    app.queue(concurrency_count=2)
     app.launch(debug=True, enable_queue=True)
 
 
