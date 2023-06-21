@@ -3,7 +3,7 @@ stable_model_list = [
     "dreamlike-art/dreamlike-diffusion-1.0",
     "kadirnar/maturemalemix_v0",
     "kadirnar/DreamShaper_v6",
-    "stabilityai/stable-diffusion-2-inpainting"
+    "SG161222/Realistic_Vision_V2.0"
 ]
 
 stable_inpiant_model_list = [
