@@ -115,7 +115,7 @@ class StableDiffusionImage2ImageGenerator:
                             )
                                 image2image_num_images_per_prompt = gr.Slider(
                                     minimum=1,
-                                    maximum=30,
+                                    maximum=4,
                                     step=1,
                                     value=1,
                                     label="Number Of Images",
