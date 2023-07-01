@@ -1,9 +1,4 @@
-from diffusion_webui.diffusion_models.controlnet_inpaint_pipeline import (
-    StableDiffusionControlNetInpaintGenerator,
-)
-from diffusion_webui.diffusion_models.controlnet_pipeline import (
-    StableDiffusionControlNetGenerator,
-)
+
 from diffusion_webui.diffusion_models.img2img_app import (
     StableDiffusionImage2ImageGenerator,
 )
